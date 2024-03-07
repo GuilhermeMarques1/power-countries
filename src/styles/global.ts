@@ -2,16 +2,13 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   :root { //Variáveis do css para definir cores:
-    --red: #e52e4d;
-    --green: #33cc95;
-    --blue: #5429cc;
-
-    --blue-light: #6933ff;
+    --yellow: #ffbf43;
+    --blue: #00204b;
+    --white: #ffffff;
 
     --text-title: #363f5f;
     --text-body: #969cb3;
 
-    --shape: #ffffff;
     --background: #f0f2f5;
   }
 
