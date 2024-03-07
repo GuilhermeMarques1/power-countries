@@ -1,7 +1,7 @@
 import { SearchBar } from "../SearchBar";
 
 import logoImg from '../../assets/logo.svg';
-import { Container, Content, Title, Logo } from './styles';
+import { Container, Content, Title, Logo, History } from './styles';
 
 export function Header() {
   return (
@@ -14,7 +14,12 @@ export function Header() {
           </Title>
         </Logo>
 
-        <SearchBar />
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <SearchBar />
+          <History>
+            <p>Histórico</p>
+          </History>
+        </div>
       </Content>
     </Container>
   )
