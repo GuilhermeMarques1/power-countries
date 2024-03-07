@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-  :root { //Variáveis do css para definir cores:
+  :root {
     --yellow: #ffbf43;
     --blue: #00204b;
     --white: #ffffff;
@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle`
     --background: #f0f2f5;
   }
 
-  // Tamanho de fonte da aplicação padrão vem como 16px, funciona muito bem para Desktop. Porém para outros dispostivos pode não ser a melhor opção.
   html {
     @media (max-width: 1080px) { //Para uma tela até 1080px de largura o font-size será diminuido para 15px
       font-size: 93.75%; //15px
