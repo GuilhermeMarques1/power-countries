@@ -16,10 +16,11 @@ export const Content = styled.div`
   row-gap: 40px;
 `;
 
-export const CountryContent = styled.div`
+export const CountryContent = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--background);
   width: 20rem;
   padding: 0 0 2rem 0;
 
@@ -40,6 +41,12 @@ export const CountryContent = styled.div`
     align-items: center;
     gap: 1.2rem;
     padding: 0 1rem 0 1rem;
+  }
+
+  transition: filter 0.3s;
+
+  &:hover {
+    filter: brightness(0.98);
   }
 `;
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import RestCountriesAPI from "../../services/RestCountriesAPI";
 
@@ -20,7 +21,6 @@ export function CountriesList() {
       setIsLoading(false);
     }
 
-    console.log(isLoading);
     if(isLoading) fetchCountries();
   }, []);
 
@@ -29,7 +29,7 @@ export function CountriesList() {
       <Content>
         {
           countries.map((country) => (
-            <CountryContent>
+            <CountryContent key={country.name.official}>
               <img src={country.flags.svg} alt={country.flags.alt} />
               <div>
                 <Title>{country.translations.por.common.toLocaleUpperCase()}</Title>
