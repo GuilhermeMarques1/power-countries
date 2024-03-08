@@ -22,7 +22,9 @@ export const Title = styled.div`
   }
 `;
 
-export const Logo = styled.div`
+export const Logo = styled.button`
+  background: none;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;

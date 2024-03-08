@@ -10,7 +10,7 @@ export function Header() {
   return (
     <Container>
       <Content>
-        <Logo>
+        <Logo onClick={() => navigate('/')}>
           <img src={logoImg} alt="power-countries-logo" />
           <Title>
             <h1>Power<span>.C</span>ountries</h1>
