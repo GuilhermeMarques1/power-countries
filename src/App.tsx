@@ -1,5 +1,6 @@
-import React from 'react';
 import { Header } from "./components/Header"
+import { CountriesList } from "./components/CountriesList";
+
 import { GlobalStyle } from "./styles/global";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <GlobalStyle />
       <Header />
+      <CountriesList />
     </>
   );
 }
