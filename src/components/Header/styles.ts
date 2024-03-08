@@ -31,13 +31,21 @@ export const Logo = styled.div`
 
 export const History = styled.div`
   width: 2px;
-  color: var(--white);
   padding: 0.1rem 0.8rem;
   margin-left: 1rem;
   border-left: 1px solid var(--white);
-
-  p {
+  
+  button {
+    background: none;
+    border: none;
+    color: var(--white);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.2rem;
+
+    transition: filter 0.3s;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
   }
 `;

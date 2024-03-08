@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { SearchBar } from "../SearchBar";
 
 import logoImg from '../../assets/logo.svg';
 import { Container, Content, Title, Logo, History } from './styles';
 
 export function Header() {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Content>
@@ -17,7 +20,9 @@ export function Header() {
         <div style={{ display: "flex", alignItems: "center" }}>
           <SearchBar />
           <History>
-            <p>Histórico</p>
+            <button onClick={() => navigate('history')}>
+              Histórico
+            </button>
           </History>
         </div>
       </Content>

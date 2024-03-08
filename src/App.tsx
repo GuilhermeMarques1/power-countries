@@ -1,5 +1,4 @@
-import { Header } from "./components/Header"
-import { CountriesList } from "./components/CountriesList";
+import { AppRoutes } from "./route";
 
 import { GlobalStyle } from "./styles/global";
 
@@ -7,8 +6,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Header />
-      <CountriesList />
+      <AppRoutes />
     </>
   );
 }
