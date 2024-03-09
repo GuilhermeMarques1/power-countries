@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
+import { BackButton } from "../../components/BackButton";
 import { CSVLink } from "react-csv";
 
 import { Container, Content, DownloadButton } from "./styles";
@@ -53,6 +54,7 @@ export function History() {
           Download do histórico
         </DownloadButton>
       </CSVLink>
+      <BackButton />
       <Container>
         <Content>
           <table>

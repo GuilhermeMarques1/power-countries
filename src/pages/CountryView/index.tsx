@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { ICountriesList } from "../../Types/ICountries";
+import { BackButton } from "../../components/BackButton";
 
 import { Header } from "../../components/Header";
 import { Container, Content } from "./styles";
@@ -11,6 +12,7 @@ export function CountryView() {
   return (
    <> 
       <Header />
+      <BackButton />
       <Container>
         {
           country ?
