@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "../../hooks/useSearch";
 import RestCountriesAPI from "../../services/RestCountriesAPI";
+import { Loading } from "../Loading";
 
 import { Container, Content, CountryContent, Title, Info } from "./styles";
 
@@ -50,25 +51,27 @@ export function CountriesList() {
     country.translations.por.common.toLowerCase().includes(search.toLowerCase())
   );
 
-  return (
-    <Container>
-      <Content>
-        {
-          filteredCountries.map((country) => (
-            <CountryContent 
-              onClick={() => handleButtonClick(country)}
-              key={country.name.official}
-            >
-              <img src={country.flags.svg} alt={country.flags.alt} />
-              <div>
-                <Title>{country.translations.por.common.toLocaleUpperCase()}</Title>
-                <Info>{country.region}</Info>
-                <Info>{country.capital}</Info>
-              </div>
-            </CountryContent>
-          ))
-        }
-      </Content>
-    </Container>
-  );
-}
+  return isLoading ? 
+    <Loading /> :
+    (
+      <Container>
+        <Content>
+          {
+            filteredCountries.map((country) => (
+              <CountryContent 
+                onClick={() => handleButtonClick(country)}
+                key={country.name.official}
+              >
+                <img src={country.flags.svg} alt={country.flags.alt} />
+                <div>
+                  <Title>{country.translations.por.common.toLocaleUpperCase()}</Title>
+                  <Info>{country.region}</Info>
+                  <Info>{country.capital}</Info>
+                </div>
+              </CountryContent>
+            ))
+          }
+        </Content>
+      </Container>
+    )
+};
