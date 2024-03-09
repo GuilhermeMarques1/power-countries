@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "../../hooks/useSearch";
 import RestCountriesAPI from "../../services/RestCountriesAPI";
+import { toast } from "react-toastify";
 import { Loading } from "../Loading";
 
 import { Container, Content, CountryContent, Title, Info } from "./styles";
@@ -18,13 +19,19 @@ export function CountriesList() {
 
   useEffect(() => {
     const fetchCountries = async () => {
-      const res = 
-        await RestCountriesAPI
-              .get('/all?fields=name,flags,currencies,capital,region,languages,population,translations');
-      
-      const allCountries = res.data as ICountriesList[];
-      setCountries(allCountries);
-      setIsLoading(false);
+      try {
+        const res = 
+          await RestCountriesAPI
+                .get('/all?fields=name,flags,currencies,capital,region,languages,population,translations');
+        
+        throw('ai');        
+        const allCountries = res.data as ICountriesList[];
+        setCountries(allCountries);
+        setIsLoading(false);
+      } catch (error) {
+        console.log('is here');
+        return toast.error('Erro ao buscar países');
+      }
     }
 
     if(isLoading) fetchCountries();
