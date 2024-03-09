@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSearch } from "../../hooks/useSearch";
 import RestCountriesAPI from "../../services/RestCountriesAPI";
 
 import { Container, Content, CountryContent, Title, Info } from "./styles";
@@ -10,6 +11,7 @@ import { IHistory } from "../../Types/IHIstory";
 
 export function CountriesList() {
   const navigate = useNavigate();
+  const { search } = useSearch();
   const [isLoading, setIsLoading] = useState(true);
   const [countries, setCountries] = useState<ICountriesList[]>([]);
 
@@ -44,11 +46,15 @@ export function CountriesList() {
     }
   }
 
+  const filteredCountries = countries.filter((country) =>
+    country.translations.por.common.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <Container>
       <Content>
         {
-          countries.map((country) => (
+          filteredCountries.map((country) => (
             <CountryContent 
               onClick={() => handleButtonClick(country)}
               key={country.name.official}

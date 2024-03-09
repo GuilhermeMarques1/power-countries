@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { SearchBar } from "../SearchBar";
+import { useSearch } from "../../hooks/useSearch";
 
 import logoImg from '../../assets/logo.svg';
 import { Container, Content, Title, Logo, History } from './styles';
 
 export function Header() {
+  const { setSearch } = useSearch();
+
   const navigate = useNavigate();
 
   return (
