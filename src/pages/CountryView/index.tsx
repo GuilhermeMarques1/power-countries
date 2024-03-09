@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import RestCountriesAPI from "../../services/RestCountriesAPI";
 import { ICountriesList } from "../../Types/ICountries";
 
 import { Header } from "../../components/Header";
@@ -8,23 +6,7 @@ import { Container, Content } from "./styles";
 
 export function CountryView() {
   const { state } = useLocation();
-  const id = state && state.id;
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [country, setCountry] = useState<ICountriesList>();
-
-  useEffect(() => {
-    const fetchCountry = async () => {
-      const res = await RestCountriesAPI.get(`/name/${id}`);
-
-      const [countryData] = res.data as ICountriesList[];
-
-      setCountry(countryData);
-      setIsLoading(false);
-    }
-
-    if(isLoading) fetchCountry();
-  }, []);
+  const country = state && state.country as ICountriesList;
 
   return (
    <> 

@@ -27,10 +27,10 @@ export function CountriesList() {
     if(isLoading) fetchCountries();
   }, []);
 
-  const handleButtonClick = (id: string) => {
+  const handleButtonClick = (country: ICountriesList) => {
     try {
       const newCountry: IHistory = {
-        id: id,
+        country: country,
         time: new Date(),
       };
       const historyString = localStorage.getItem("@power-countries:history");
@@ -38,7 +38,7 @@ export function CountriesList() {
       history.push(newCountry);      
       
       localStorage.setItem("@power-countries:history", JSON.stringify(history));
-      navigate(`/country`, { state: { id: id } });
+      navigate(`/country`, { state: { country: country } });
     } catch (error) {
       return;
     }
@@ -50,7 +50,7 @@ export function CountriesList() {
         {
           countries.map((country) => (
             <CountryContent 
-              onClick={() => handleButtonClick(country.name.official)}
+              onClick={() => handleButtonClick(country)}
               key={country.name.official}
             >
               <img src={country.flags.svg} alt={country.flags.alt} />
