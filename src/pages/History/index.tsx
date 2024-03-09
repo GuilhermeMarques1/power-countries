@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
+import { CSVLink } from "react-csv";
 
-import { Container, Content } from "./styles";
+import { Container, Content, DownloadButton } from "./styles";
 import { IHistory } from "../../Types/IHIstory";
 import { ICountriesList } from "../../Types/ICountries";
 
@@ -27,9 +28,31 @@ export function History() {
     }
   }
 
+  const csvData = history.map((country) => {
+    return [
+      country.country.translations.por.common,
+      country.country.region,
+      country.country.capital,
+      new Intl.DateTimeFormat('pt-BR', { 
+        day: '2-digit', 
+        month: '2-digit', 
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }).format(new Date(country.time))
+    ]
+  });
+  csvData.unshift(['Nome', 'Região', 'Capital', 'Data']);
+
   return (
     <>
       <Header />
+      <CSVLink data={csvData} >
+        <DownloadButton>
+          Download do histórico
+        </DownloadButton>
+      </CSVLink>
       <Container>
         <Content>
           <table>

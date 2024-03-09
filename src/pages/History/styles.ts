@@ -47,12 +47,34 @@ export const Content = styled.div`
       tr {
         cursor: pointer;
   
-        transition: filter 0.3s;
+        transition: background-color 0.4s;
   
         &:hover {
           background-color: ${lighten(0.3, '#ffbf43')};
         }
       }
     }
+  }
+`;
+
+export const DownloadButton = styled.button`
+  position: absolute;
+  right: 2rem;
+  top: 10rem;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.2rem;
+  background-color: ${lighten(0.08, "#00204b")};
+  color: var(--white);
+  font-size: 18px;
+  border-radius: 12px;
+
+  transition: filter 0.3s;
+
+  &:hover {
+    filter: brightness(0.9);
   }
 `;
