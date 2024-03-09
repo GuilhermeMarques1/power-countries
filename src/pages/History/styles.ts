@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { lighten } from "polished";
 
 export const Container = styled.div`
   width: 100%;
@@ -30,7 +31,6 @@ export const Content = styled.div`
     td {
       padding: 1rem 2rem;
       border: 0;
-      background-color: var(--shape);
       font-weight: 400;
       color: var(--text-body);
       border-radius: 0.25rem;
@@ -43,13 +43,15 @@ export const Content = styled.div`
       }
     }
 
-    tr {
-      cursor: pointer;
-
-      transition: filter 0.3s;
-
-      &:hover {
-        filter: brightness(0.9);
+    tbody {
+      tr {
+        cursor: pointer;
+  
+        transition: filter 0.3s;
+  
+        &:hover {
+          background-color: ${lighten(0.3, '#ffbf43')};
+        }
       }
     }
   }
