@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 
 import { Container, Content } from "./styles";
@@ -6,10 +6,26 @@ import { IHistory } from "../../Types/IHIstory";
 import { ICountriesList } from "../../Types/ICountries";
 
 export function History() {
+  const navigate = useNavigate();
   const historyString = localStorage.getItem("@power-countries:history");
   const history: IHistory[] = JSON.parse(historyString || '[]') as IHistory[];
 
-  console.log(history[0].time);
+  const handleButtonClick = (country: ICountriesList) => {
+    try {
+      const newCountry: IHistory = {
+        country: country,
+        time: new Date(),
+      };
+      const historyString = localStorage.getItem("@power-countries:history");
+      const history: IHistory[] = JSON.parse(historyString || '[]') as IHistory[];
+      history.push(newCountry);      
+      
+      localStorage.setItem("@power-countries:history", JSON.stringify(history));
+      navigate(`/country`, { state: { country: country } });
+    } catch (error) {
+      return;
+    }
+  }
 
   return (
     <>
@@ -30,7 +46,7 @@ export function History() {
             <tbody>
               {
                 history.map((country) => (
-                  <tr key={country.time.toString()}>
+                  <tr key={country.time.toString()} onClick={() => handleButtonClick(country.country)}>
                     <td>
                       <img src={country.country.flags.svg} alt={country.country.flags.alt} />                  
                     </td>
