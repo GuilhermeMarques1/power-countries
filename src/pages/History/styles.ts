@@ -15,6 +15,12 @@ export const Content = styled.div`
     width: 100%;
     border-spacing: 0 0.5rem;
 
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
     th {
       color: var(--text-body);
       font-weight: 400;
@@ -30,6 +36,11 @@ export const Content = styled.div`
       font-weight: 400;
       color: var(--text-body);
       border-radius: 0.25rem;
+
+      img {
+        height: 80px;
+        width: 80px;
+      }
     }
   }
 `;

@@ -1,4 +1,6 @@
+import { ICountriesList } from "./ICountries"
+
 export type IHistory = {
-  id: string,
+  country: ICountriesList,
   time: Date
 }
