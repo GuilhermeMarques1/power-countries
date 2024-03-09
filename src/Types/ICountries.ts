@@ -3,13 +3,10 @@ type Currency = {
   symbol: string,
 };
 
-type Currencies = {
-  [currencyCode: string]: Currency,
-};
+type Currencies = Record<string, Currency>;
 
-type Languages = {
-  [languageCode: string]: string,
-}
+type Languages = Record<string, string>;
+
 
 export type ICountriesList = {
   flags: {
@@ -28,6 +25,6 @@ export type ICountriesList = {
   population: number
   region: string,
   capital: string[],
-  currencies?: Currencies,
-  languages?: Languages,
+  currencies: Currencies | Record<string, never>,
+  languages: Languages | Record<string, never>,
 }

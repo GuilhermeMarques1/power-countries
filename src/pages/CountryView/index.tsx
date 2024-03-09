@@ -6,7 +6,7 @@ import { Container, Content } from "./styles";
 
 export function CountryView() {
   const { state } = useLocation();
-  const country = state && state.country as ICountriesList;
+  const country: ICountriesList = state && state.country as ICountriesList;
 
   return (
    <> 
@@ -21,32 +21,29 @@ export function CountryView() {
               <ul>
                 <li><strong>Região:</strong> {country.region}</li>
                 {
-                  country.capital && 
-                  <li><strong>Capital:</strong> {country.capital}</li>
+                  country.capital.length ? 
+                  <li><strong>Capital:</strong> {country.capital}</li> :
+                  <></>
                 }
                 <li><strong>População:</strong> {country.population}</li>
                 <li>
+                  {Object.keys(country.languages).length > 0 && <strong>Línguas: </strong>}
                   {Object.keys(country.languages ?? {}).map((key, index, array) => (
-                    country.languages &&
-                    <>
-                      <strong>Línguas: </strong> 
+                    country.languages && 
                       <span>
                         {country.languages[key]}
                         {index < array.length - 1 ? ', ' : ''}
                       </span>
-                    </>
                   ))}
                 </li>
                 <li>
-                  {Object.keys(country.currencies ?? {}).map((key, index, array) => (
-                    country.currencies &&
-                    <>
-                      <strong>Moeda: </strong>
+                  {Object.keys(country.currencies).length > 0 && (<strong>Moeda: </strong>)} 
+                  {Object.keys(country.currencies).map((key, index, array) => (
+                    Object.keys(country.currencies).length > 0 &&
                       <span>
                         {country.currencies[key].name} ({country.currencies[key].symbol})
                         {index < array.length - 1? ', ' : ''}
                       </span>
-                    </>
                   ))}
                 </li>
               </ul>

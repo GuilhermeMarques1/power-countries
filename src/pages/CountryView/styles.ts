@@ -15,10 +15,11 @@ export const Content = styled.div`
   justify-content: center;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  padding: 2rem 4rem;
+  padding: 6rem 8rem;
+  margin-bottom: 4rem;
 
   img {
-    max-width: 800px;
+    max-width: 500px;
     max-height: 500px;
   }
 
@@ -26,6 +27,7 @@ export const Content = styled.div`
     h1 {
       margin-bottom: 2rem;
       color: var(--text-title);
+      max-width: 500px;
     }
 
     ul {
