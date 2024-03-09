@@ -20,7 +20,7 @@ export function Header() {
         <div style={{ display: "flex", alignItems: "center" }}>
           <SearchBar />
           <History>
-            <button onClick={() => navigate('history')}>
+            <button onClick={() => navigate("/history")}>
               Histórico
             </button>
           </History>
