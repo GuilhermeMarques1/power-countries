@@ -24,7 +24,6 @@ export function CountriesList() {
           await RestCountriesAPI
                 .get('/all?fields=name,flags,currencies,capital,region,languages,population,translations');
         
-        throw('ai');        
         const allCountries = res.data as ICountriesList[];
         setCountries(allCountries);
         setIsLoading(false);
