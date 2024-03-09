@@ -6,6 +6,7 @@ import RestCountriesAPI from "../../services/RestCountriesAPI";
 import { Container, Content, CountryContent, Title, Info } from "./styles";
 
 import { ICountriesList } from "../../Types/ICountries";
+import { IHistory } from "../../Types/IHIstory";
 
 export function CountriesList() {
   const navigate = useNavigate();
@@ -27,7 +28,20 @@ export function CountriesList() {
   }, []);
 
   const handleButtonClick = (id: string) => {
-    navigate(`/country`, { state: { id: id } });
+    try {
+      const newCountry: IHistory = {
+        id: id,
+        time: new Date(),
+      };
+      const historyString = localStorage.getItem("@power-countries:history");
+      const history: IHistory[] = JSON.parse(historyString || '[]') as IHistory[];
+      history.push(newCountry);      
+      
+      localStorage.setItem("@power-countries:history", JSON.stringify(history));
+      navigate(`/country`, { state: { id: id } });
+    } catch (error) {
+      return;
+    }
   }
 
   return (
