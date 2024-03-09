@@ -26,13 +26,17 @@ export function CountriesList() {
     if(isLoading) fetchCountries();
   }, []);
 
+  const handleButtonClick = (id: string) => {
+    navigate(`/country`, { state: { id: id } });
+  }
+
   return (
     <Container>
       <Content>
         {
           countries.map((country) => (
             <CountryContent 
-              onClick={() => navigate('/country')}
+              onClick={() => handleButtonClick(country.name.official)}
               key={country.name.official}
             >
               <img src={country.flags.svg} alt={country.flags.alt} />

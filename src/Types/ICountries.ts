@@ -1,3 +1,16 @@
+type Currency = {
+  name: string,
+  symbol: string,
+};
+
+type Currencies = {
+  [currencyCode: string]: Currency,
+};
+
+type Languages = {
+  [languageCode: string]: string,
+}
+
 export type ICountriesList = {
   flags: {
     svg: string,
@@ -15,6 +28,6 @@ export type ICountriesList = {
   population: number
   region: string,
   capital: string[],
-  currencies: any,
-  languages: any
+  currencies?: Currencies,
+  languages?: Languages,
 }

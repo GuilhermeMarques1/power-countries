@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { darken } from "polished";
 
 export const Container = styled.div`
   display: flex;
@@ -58,6 +57,6 @@ export const Title = styled.p`
 
 export const Info = styled.p`
   font-weight: 400;
-  color: ${darken(0.2, "#969cb3")};
+  color: var(--text-body);
   font-size: 18px;
 `;
